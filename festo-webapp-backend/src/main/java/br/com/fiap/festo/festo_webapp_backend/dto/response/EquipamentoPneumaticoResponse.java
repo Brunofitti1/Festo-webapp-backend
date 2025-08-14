@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -30,9 +31,9 @@ public class EquipamentoPneumaticoResponse {
     private Double pressaoOperacao;
     private Double temperaturaOperacao;
     private Long ciclosRealizados;
-    private LocalDateTime dataInstalacao;
-    private LocalDateTime dataUltimaManutencao;
-    private LocalDateTime proximaManutencao;
+    private LocalDate dataInstalacao;
+    private LocalDate dataUltimaManutencao;
+    private LocalDate proximaManutencao;
     private Integer intervaloManutencaoHoras;
     private String observacoes;
     private Boolean ativo;

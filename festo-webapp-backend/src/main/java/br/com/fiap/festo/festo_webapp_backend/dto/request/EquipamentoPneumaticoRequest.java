@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * DTO para criação e atualização de equipamentos pneumáticos
@@ -53,11 +53,11 @@ public class EquipamentoPneumaticoRequest {
     // @PositiveOrZero(message = "Ciclos realizados deve ser zero ou positivo")
     private Long ciclosRealizados;
 
-    private LocalDateTime dataInstalacao;
+    private LocalDate dataInstalacao;
 
-    private LocalDateTime dataUltimaManutencao;
+    private LocalDate dataUltimaManutencao;
 
-    private LocalDateTime proximaManutencao;
+    private LocalDate proximaManutencao;
 
     // @Positive(message = "Intervalo de manutenção deve ser positivo")
     private Integer intervaloManutencaoHoras;

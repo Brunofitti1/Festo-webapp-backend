@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -68,8 +69,8 @@ public class EquipamentoPneumaticoServiceImpl {
 
         // Calcular próxima manutenção se não informada
         if (equipamento.getProximaManutencao() == null && equipamento.getIntervaloManutencaoHoras() != null) {
-            LocalDateTime proximaManutencao = LocalDateTime.now()
-                    .plusHours(equipamento.getIntervaloManutencaoHoras());
+            LocalDate proximaManutencao = LocalDate.now()
+                    .plusDays(equipamento.getIntervaloManutencaoHoras() / 24); // Converter horas para dias
             equipamento.setProximaManutencao(proximaManutencao);
         }
 
@@ -120,7 +121,7 @@ public class EquipamentoPneumaticoServiceImpl {
     public List<EquipamentoPneumaticoResponse> buscarEquipamentosComManutencaoVencida() {
         log.info("Buscando equipamentos com manutenção vencida");
 
-        LocalDateTime agora = LocalDateTime.now();
+        LocalDate agora = LocalDate.now();
         List<EquipamentoPneumatico> equipamentos = equipamentoRepository
                 .findEquipamentosComManutencaoVencida(agora);
 
@@ -217,7 +218,7 @@ public class EquipamentoPneumaticoServiceImpl {
             return null;
         }
 
-        LocalDateTime agora = LocalDateTime.now();
+        LocalDate agora = LocalDate.now();
         return (int) ChronoUnit.DAYS.between(agora, equipamento.getProximaManutencao());
     }
 

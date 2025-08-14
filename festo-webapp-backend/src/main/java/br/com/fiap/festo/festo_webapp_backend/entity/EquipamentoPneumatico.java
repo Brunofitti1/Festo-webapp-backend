@@ -7,6 +7,7 @@ import lombok.Builder;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -57,13 +58,13 @@ public class EquipamentoPneumatico {
     private Long ciclosRealizados;
 
     @Column(name = "data_instalacao")
-    private LocalDateTime dataInstalacao;
+    private LocalDate dataInstalacao;
 
     @Column(name = "data_ultima_manutencao")
-    private LocalDateTime dataUltimaManutencao;
+    private LocalDate dataUltimaManutencao;
 
     @Column(name = "proxima_manutencao")
-    private LocalDateTime proximaManutencao;
+    private LocalDate proximaManutencao;
 
     @Column(name = "intervalo_manutencao_horas")
     private Integer intervaloManutencaoHoras;
@@ -72,6 +73,7 @@ public class EquipamentoPneumatico {
     private String observacoes;
 
     @Column(name = "ativo", nullable = false)
+    @Builder.Default
     private Boolean ativo = true;
 
     @Column(name = "created_at", nullable = false)
